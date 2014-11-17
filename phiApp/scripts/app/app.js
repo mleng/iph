@@ -145,7 +145,11 @@ var app = (function (win) {
         return new Date().getFullYear();
     }());
 
+
+    var currentPH;
+    
     return {
+        isNullOrEmpty: isNullOrEmpty,
         showAlert: showAlert,
         showError: showError,
         showConfirm: showConfirm,
@@ -153,6 +157,10 @@ var app = (function (win) {
         mobileApp: mobileApp,
         helper: AppHelper,
         everlive: el,
-        getYear: getYear
+        getYear: getYear,
+        currentPH: currentPH,
+        emptyGuid: emptyGuid
     };
+      
+   
 }(window));

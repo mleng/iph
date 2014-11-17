@@ -16,18 +16,132 @@
         <script src="scripts/app/signup.js" type="text/javascript"></script>
         <script src="scripts/app/activities.js" type="text/javascript"></script>
         <script src="scripts/app/activity.js" type="text/javascript"></script>
+
         <script src="scripts/app/comments.js" type="text/javascript"></script>
         <script src="scripts/app/add-activity.js" type="text/javascript"></script>
         <script src="scripts/app/add-comment.js" type="text/javascript"></script>
+
+    
+        <script src="app/contactos/scripts/contactos.js" type="text/javascript"></script>
+        <script src="app/contactos/scripts/add-contacto.js" type="text/javascript"></script>
+        <script src="app/phs/scripts/phs.js" type="text/javascript"></script>
+        <script src="app/inicio/scripts/inicio.js" type="text/javascript"></script>
+        <script src="app/eventos/scripts/eventos.js" type="text/javascript"></script>
 
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,300,700,800" rel="stylesheet" type="text/css" />
         <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet" />
     </head>
     <body id="friendsApp">
+        <style>
+    .km-ios #my-drawer .km-content, .km-android #my-drawer .km-content, .km-blackberry #my-drawer .km-content,
+    .km-ios #my-drawer .km-list > li, .km-android #my-drawer .km-list > li, .km-blackberry #my-drawer .km-list > li,
+    .km-ios #my-drawer .km-listview-link > .km-icon, .km-android #my-drawer .km-listview-link > .km-icon, .km-blackberry #my-drawer .km-listview-link > .km-icon,
+    .km-ios #my-drawer .km-list li > .km-icon, .km-android #my-drawer .km-list li > .km-icon, .km-blackberry #my-drawer .km-list li > .km-icon
+    {
+        background-color: #4e4e4e;
+        color: black;
+    }
+
+    .km-ios #my-drawer .km-group-title,
+    .km-blackberry #my-drawer .km-group-title
+    {
+        background-color: #6e6e6e;
+        color: #fff;
+    }
+
+    .km-drawer-button:before, .km-drawer-button:after  { content: "\E077"; }
+    .km-inbox:before, .km-inbox:after { content: "\E0B0"; }
+    .km-sent:before, .km-sent:after { content: "\E0C6"; }
+    .km-trash:before, .km-trash:after { content: "\E0C3"; }
+    .km-spam:before, .km-spam:after { content: "\E0C5"; }
+    .km-star:before, .km-star:after { content: "\E0D7"; }
+    .km-settings:before, .km-settings:after { content: "\E0DA"; }
+    .km-off:before, .km-off:after { content: "\E0B9"; }
+
+    .inboxList
+    {
+        font-size: .8em;
+    }
+
+    .inboxList p,
+    .inboxList h2,
+    .inboxList h3
+    {
+        margin: 5px 2px;
+    }
+
+    .inboxList p,
+    .inboxList h3
+    {
+        color: #777;
+    }
+
+    .inboxList h3.time
+    {
+        color: #369;
+        float: left;
+        margin-right: 10px;
+    }
+
+    #drawer-spam .spam
+    {
+        color: darkred;
+        background: currentcolor;
+        display: block;
+        margin: 2em;
+        font-size: 1.4em;
+    }
+
+    #drawer-spam .spam .km-text
+    {
+        color: white;
+    }
+</style>
         <div data-role="layout" data-id="default">
             <!--View content will render here-->
         </div>
+        <div data-role="layout" data-id="default2" >
+            <!--View content will render here-->
+              
+              <div data-role="footer">
+                    <div data-role="tabstrip" class="activities-view">
+                        <a href="app/inicio/views/inicioView.html" data-icon="home">Inicio</a>   
+                        <a href="app/eventos/views/eventosView.html" data-icon="recents" data-badge="2">Eventos</a>
+                        <a href="app/contactos/views/contactosView.html" data-icon="contacts" data-badge="3">Contactos</a>
+                        <a href="app/quejas/views/quejasView.html" data-icon="action" data-badge="18">Quejas</a>
+                        <a href="app/phs/views/phsView.html" data-icon="more">Más</a>
+                    </div>
+                </div>            
+        </div>
+         
+        <div data-role="drawer" id="my-drawer" style="width: 270px;" >
+            <ul data-role="listview" data-type="group"  style="background-color: #007196;   color: gray !important;" >
+                <li style="padding-top:30px">Tasks
+                    <ul>
+                        <li> <a href="app/inicio/views/inicioView.html" data-transition="none" data-icon="home">Inicio</a>   </li>
+                        <li> <a href="app/eventos/views/comunicadosView.html" data-transition="none" data-icon="recents" data-badge="4">Comunicados</a></li>
+                        <li> <a href="app/eventos/views/eventosView.html" data-transition="none" data-icon="recents" data-badge="2">Eventos</a></li>
+                        <li> <a href="app/contactos/views/contactosView.html" data-transition="none" data-icon="contacts" data-badge="3">Contactos</a></li>
+                        <li> <a href="app/quejas/views/quejasView.html" data-transition="none" data-icon="action">Quejas <span style="font-weight:bold">(14)</span></a></li>
+                        <li> <a href="app/phs/views/phsView.html" data-transition="none" data-icon="more">Cambiar PH</a></li>
+                    </ul>
+                </li>
+                <li>Account
+                    <ul>
+                        <li data-icon="settings">Settings</li>
+                        <li data-icon="off" ><a href="#" data-role="button" data-transition="none" data-click="app.contactos.logout"> Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      
+        <div data-role="layout" data-id="default3" >
+         
+            <!--View content will render here-->
+         </div>
+        
+        
         <!--WELCOME VIEW -->
         <div data-role="view" id="welcome" data-layout="default" class="welcome-scrn form-view" data-model="app.Login" data-init="app.Login.init" data-show="app.Login.show">
             <div data-role="header"></div>
@@ -64,7 +178,7 @@
                 </li>
             </ol>
 
-            <div data-role="footer"><p>&copy; <span data-bind="text: getYear"></span>Smart Community</p></div>
+            <div data-role="footer"><p>&copy; <span data-bind="text: getYear"></span> Smart Community</p></div>
         </div>
     </body>
 </html>

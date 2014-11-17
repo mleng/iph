@@ -60,7 +60,10 @@ app.Login = (function () {
 
             var username = $loginUsername.val();
             var password = $loginPassword.val();
-
+                 kendo.mobile.application.hideLoading(); 
+           
+               kendo.mobile.application.changeLoadingMessage("Loading...");
+                kendo.mobile.application.showLoading(); //hide loading popup
             // Authenticate using the username and password
             app.everlive.Users.login(username, password)
             .then(function () {
@@ -68,17 +71,20 @@ app.Login = (function () {
                 if (isAnalytics) {
                     analytics.TrackFeature('Login.Regular');
                 }
-
+                  
                 return app.Users.load();
             })
             .then(function () {
-
-                app.mobileApp.navigate('views/activitiesView.html');
+                 
+                 app.mobileApp.navigate('app/phs/views/phsView.html');
+                               kendo.mobile.application.hideLoading();
             })
             .then(null,
                   function (err) {
+                      kendo.mobile.application.hideLoading(); 
                       app.showError(err.message);
                   }
+                     
             );
         };
 
