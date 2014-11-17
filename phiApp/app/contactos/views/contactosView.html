@@ -1,0 +1,35 @@
+<div data-role="view" id="view-all-contactos" data-layout="default3" class="activities-view" data-model="app.contactos" data-show="app.contactos.show"   },
+>
+    <div data-role="header">
+        <div data-role="navbar"  >
+        <a data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left" data-badge="2"></a>
+          Contactos - <span class="TitleSelector"> </span> 
+        <a class="nav-button nav-button-add hide-text" data-align="right" data-role="button" href="app/contactos/views/addContactoView.html">Add</a>
+        </div>
+    </div>
+    <ul id="contactos-listview" data-style="inset" data-role="listview" data-template="contactoTemplate"
+         data-header-template="contactoHeaderTemplate2" data-bind="source: contactos" data-type="group" ></ul>
+    <p id="no-contactos-span" hidden="hidden" class="no-items-msg">
+        <b>You have no posts yet.</b><br /><br />Tap on the plus sign and share what's on your mind.
+    </p>
+</div>
+
+<!-- Activities ListView Template -->
+<script type="text/x-kendo-template" id="contactoTemplate">
+    <div data-role="touch" class="cf">
+        <div class="user-avatar">
+            <img data-bind="attr:{src: User().PictureUrl}" alt="styles/images/avatar.png" />
+        </div>
+        <div class="activity-content">
+            <h2 class="person-name">${Nombre}</h2>
+            <span class="time-span"> ${CreatedAtFormatted()}</span>
+           ${User().DisplayName}  <a class="user-share-txt" href="tel:${Telefono}">${Telefono}</a>
+        </div>
+    </div>
+</script>
+<!-- Activities ListView Template -->
+<script type="text/x-kendo-template" id="contactoHeaderTemplate2">
+  <div style="color:gray; background-color:lightgray; margin-left:-3%; width:105% ">
+   #: value #
+</div>
+</script>
